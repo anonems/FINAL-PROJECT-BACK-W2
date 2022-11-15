@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - '9905:80'
+        volumes:
+            - ./front-end/src:/var/www/html
+
+    db:
+        image: 'mysql'
+        restart: always
+        environment:
+            MYSQL_DATABASE: blog
+            MYSQL_ROOT_PASSWORD: password
+        volumes:
+            - ./database/blogmvc.sql:/docker-entrypoint-initdb.d/blogmvc.sql
+            - db_data:/var/lib/mysql
+
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - '8200:80'
+        environment:
+            - PMA_ARBITRARY=1
+
+volumes:
+    db_data:
