@@ -4,24 +4,24 @@ namespace App\Entitys;
 
 class Comment extends BaseEntity
 {
-    private $id;
-    private $author;
-    private $pubdate;
-    private $content;
-    private $id_article;
-    private $id_parent_comment;
+    private int $id;
+    private string $author;
+    private Datetime $pubdate;
+    private string $content;
+    private int $id_article;
+    private int $id_parent_comment;
 
      //setters
      public function setAuthor(string $author): Comment
      {
          $this->author = $author;
-         return $author;
+         return $this;
      }
  
      public function setId_article(int $id_article): Comment
      {
          $this->id_article = $id_article;
-         return $id_article;
+         return $this;
      }
  
      public function setId_parent_comment(int $id_parent_comment): Comment
@@ -41,7 +41,7 @@ class Comment extends BaseEntity
          return $this->author;
      }
  
-     public function getPubdate(): string
+     public function getPubdate(): \Datetime
      {
          return $this->pubdate;
      }

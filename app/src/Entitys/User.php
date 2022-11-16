@@ -7,23 +7,23 @@ use App\Interfaces\UserInterface;
 
 class User extends BaseEntity
 {
-    private $id;
-    private $username;
-    private $pwd;
-    private $joindate;
-    private $role;
+    private int $id;
+    private string $username;
+    private string $pwd;
+    private Datetime $joindate;
+    private string $role;
 
     //setters
     public function setUsername(string $username): User
     {
         $this->username = $username;
-        return $username;
+        return $this;
     }
 
     public function setRole(string $role): User
     {
         $this->role = $role;
-        return $role;
+        return $this;
     }
 
     //getters
@@ -42,7 +42,7 @@ class User extends BaseEntity
         //return $this->pwd;
     }
 
-    public function getJoindate(): string
+    public function getJoindate(): \Datetime
     {
         return $this->joindate;
     }

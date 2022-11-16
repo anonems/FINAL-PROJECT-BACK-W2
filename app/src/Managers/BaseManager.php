@@ -1,9 +1,15 @@
 <?php
-namespace app\Managers ;
 
-use app\Interfaces\Database;
+namespace App\Managers;
+
+use App\Interfaces\Database;
 
 abstract class BaseManager
 {
-    protected $pdo;
+    protected \PDO $pdo;
+
+    public function __construct(Database $database)
+    {
+        $this->pdo = $database->getMySqlPDO();
+    }
 }

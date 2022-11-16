@@ -4,59 +4,60 @@ namespace App\Entitys;
 
 class Article extends BaseEntity
 {
+
     //declarations
-    private $id;
-    private $author;
-    private $title;
-    private $content;
-    private $pubdate;
-    private $category;
-    private $statut;
-    private $illustration;
-    private $descript;
+    private int $id;
+    private string $author;
+    private string $title;
+    private string $content;
+    private Datetime $pubdate;
+    private string $category;
+    private bool $statut;
+    private string $illustration;
+    private string $descript;
 
     //setters
     public function setAuthor(string $author): Article
     {
         $this->author = $author;
-        return $author;
+        return $this;
     }
 
     public function setTitle(string $title): Article
     {
         $this->title = $title;
-        return $title;
+        return $this;
     }
 
     public function setContent(string $content): Article
     {
         $this->content = $content;
-        return $content;
+        return $this;
     }
 
 
     public function setCategory(string $category): Article
     {
         $this->category = $category;
-        return $category;
+        return $this;
     }
 
     public function setStatut(bool $statut): Article
     {
         $this->statut = $statut;
-        return $statut;
+        return $this;
     }
 
     public function setIllustration(string $illustration): Article
     {
         $this->illustration = $illustration;
-        return $illustration;
+        return $this;
     }
 
     public function setDescript(string $descript): Article
     {
         $this->descript = $descript;
-        return $descript;
+        return $this;
     }
 
     //getters
@@ -80,7 +81,7 @@ class Article extends BaseEntity
         return $this->content;
     }
 
-    public function getPubdate(): string
+    public function getPubdate(): \Datetime
     {
         return $this->pubdate;
     }
