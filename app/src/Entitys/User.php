@@ -53,7 +53,7 @@ class User extends BaseEntity
     }
 
     //midelwares
-    public function passordMatch(): bool
+    public function passwordMatch(): bool
     {
         //...
     }
