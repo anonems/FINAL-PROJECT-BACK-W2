@@ -12,11 +12,11 @@
     <div class="blog-slider">
         <div class="blog-slider__wrp swiper-wrapper">
             <?php
-                if(!isset($_SESSION['connecte'])){ //not connected => login/signin
-                    include('./auth/login.php');
-                }elseif($_SESSION['connecte']){ //connected => home blog
-                    include('./blog/blog.php');
-                }
+                // if(!isset($_SESSION['connecte'])){ //not connected => login/signin
+                //     include('./auth/login.php');
+                // }elseif($_SESSION['connecte']){ //connected => home blog
+                //     include('./blog/blog.php');
+                // }
             ?>
         </div>
         <div class="blog-slider__pagination"></div>
