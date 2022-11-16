@@ -10,7 +10,7 @@ class Article extends BaseEntity
     private string $author;
     private string $title;
     private string $content;
-    private Datetime $pubdate;
+    private \Datetime $pubdate;
     private string $category;
     private bool $statut;
     private string $illustration;
