@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mar. 15 nov. 2022 à 14:38
+-- Généré le : mar. 15 nov. 2022 à 20:23
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.24
 
@@ -73,7 +73,8 @@ CREATE TABLE `user` (
   `id` int NOT NULL,
   `username` varchar(30) NOT NULL,
   `pwd` varchar(1000) NOT NULL,
-  `joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `role` varchar(5) NOT NULL DEFAULT 'low'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
