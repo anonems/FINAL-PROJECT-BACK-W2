@@ -14,7 +14,7 @@ services:
         image: 'mysql'
         restart: always
         environment:
-            MYSQL_DATABASE: blog
+            MYSQL_DATABASE: blogmvc
             MYSQL_ROOT_PASSWORD: password
         volumes:
             - ./database/blogmvc.sql:/docker-entrypoint-initdb.d/blogmvc.sql
