@@ -4,6 +4,8 @@ namespace App\Routes;
 
 use Attribute;
 
+#[Attribute]
+
 class Route
 {
     private ?string $name = null;
@@ -22,22 +24,36 @@ class Route
         }
     }
 
+    /**
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param string|null $name
+     * @return Route
+     */
     public function setName(?string $name): Route
     {
         $this->name = $name;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPath(): ?string
     {
         return $this->path;
     }
 
+    /**
+     * @param string|null $path
+     * @return Route
+     */
     public function setPath(?string $path): Route
     {
         preg_match_all("/{(\w+)}/", $path, $match);
@@ -49,44 +65,72 @@ class Route
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getController(): ?string
     {
         return $this->controller;
     }
 
+    /**
+     * @param string|null $controller
+     * @return Route
+     */
     public function setController(?string $controller): Route
     {
         $this->controller = $controller;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAction(): ?string
     {
         return $this->action;
     }
 
+    /**
+     * @param string|null $action
+     * @return Route
+     */
     public function setAction(?string $action): Route
     {
         $this->action = $action;
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getParams(): array
     {
         return $this->params;
     }
 
+    /**
+     * @param array $params
+     * @return Route
+     */
     public function setParams(array $params): Route
     {
         $this->params = $params;
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getMethods(): array
     {
         return $this->methods;
     }
 
+    /**
+     * @param array $methods
+     * @return Route
+     */
     public function setMethods(array $methods): Route
     {
         $this->methods = $methods;
@@ -104,5 +148,4 @@ class Route
     {
         return (bool)preg_match("#^{$this->path}$#", $url);
     }
-
 }

@@ -1,15 +1,15 @@
 index:
     path: /
-    controller: App\Controllers\ArticleController
+    controller: App\Controllers\articleController
     action: home
 
-showOne:
-    path: /post/{id}/{truc}/{machin}
-    controller: App\Controllers\ArticleController
-    action: showOne
-    methods:
-        - GET
-        - POST
+# showOne:
+#     path: /article/{id}/{truc}/{machin}
+#     controller: App\Controllers\articleController
+#     action: showOne
+#     methods:
+#         - GET
+#         - POST
 
 # login:
 #     path: /login
