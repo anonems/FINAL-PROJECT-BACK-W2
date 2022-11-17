@@ -1,0 +1,17 @@
+index:
+    path: /
+    controller: App\Controllers\ArticleController
+    action: home
+
+showOne:
+    path: /post/{id}/{truc}/{machin}
+    controller: App\Controllers\ArticleController
+    action: showOne
+    methods:
+        - GET
+        - POST
+
+# login:
+#     path: /login
+#     controller: App\Controllers\SecurityController
+#     action: login

@@ -6,7 +6,7 @@ class Comment extends BaseEntity
 {
     private int $id;
     private string $author;
-    private Datetime $pubdate;
+    private $pubdate;
     private string $content;
     private int $id_article;
     private int $id_parent_comment;
@@ -41,7 +41,7 @@ class Comment extends BaseEntity
          return $this->author;
      }
  
-     public function getPubdate(): \Datetime
+     public function getPubdate()
      {
          return $this->pubdate;
      }

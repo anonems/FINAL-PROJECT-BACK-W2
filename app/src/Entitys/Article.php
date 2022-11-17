@@ -10,7 +10,7 @@ class Article extends BaseEntity
     private string $author;
     private string $title;
     private string $content;
-    private \Datetime $pubdate;
+    private $pubdate;
     private string $category;
     private bool $statut;
     private string $illustration;
@@ -81,7 +81,7 @@ class Article extends BaseEntity
         return $this->content;
     }
 
-    public function getPubdate(): \Datetime
+    public function getPubdate()
     {
         return $this->pubdate;
     }
