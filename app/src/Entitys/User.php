@@ -10,7 +10,7 @@ class User extends BaseEntity
     private int $id;
     private string $username;
     private string $pwd;
-    private Datetime $joindate;
+    private $joindate;
     private string $role;
 
     //setters
@@ -42,7 +42,7 @@ class User extends BaseEntity
         //return $this->pwd;
     }
 
-    public function getJoindate(): \Datetime
+    public function getJoindate()
     {
         return $this->joindate;
     }
