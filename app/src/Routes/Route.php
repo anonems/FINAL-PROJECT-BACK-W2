@@ -51,6 +51,8 @@ class Route
     }
 
     /**
+     * Construit l'expression régulière ... 
+     * 
      * @param string|null $path
      * @return Route
      */

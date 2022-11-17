@@ -27,7 +27,6 @@ abstract class AbstractController
         $_pageContent = ob_get_clean();
         $_pageTitle = $title;
 
-
         require_once $base;
 
         exit;
