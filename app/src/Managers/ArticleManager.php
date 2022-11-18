@@ -19,16 +19,15 @@ class ArticleManager extends BaseManager
         return $users;
     }
 
-    public function getOneArticle($id): array
+    public function getOneArticle($id): Article
     {
-    $query = $this->pdo->query("select * from article where id = $id");
+    $query = $this->pdo->prepare("select * from article where id = :id");
+    $query->bindValue('id', $id, \PDO::PARAM_STR);
+    $query->execute();
+    $data = $query->fetch(\PDO::FETCH_ASSOC);
+    $article = new Article($data);
+    
 
-    $users = [];
-
-    while ($data = $query->fetch()) {
-        $users[] = new Article($data);
-    }
-
-    return $users;
+    return $article;
     }
 }

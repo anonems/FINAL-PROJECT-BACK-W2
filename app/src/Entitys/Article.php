@@ -17,6 +17,12 @@ class Article extends BaseEntity
     private string $descript;
 
     //setters
+    public function setId(int $id): Article
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function setAuthor(string $author): Article
     {
         $this->author = $author;

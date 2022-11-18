@@ -27,8 +27,6 @@ class ArticleController extends AbstractController
     {
         $manager = new ArticleManager(new PDOFactory());
         $article = $manager->getOneArticle($id);
-        echo $id;
-
         $this->render("showOne.php", ["article" => $article], "Un articles");
     }
 }
