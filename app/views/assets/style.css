@@ -322,3 +322,46 @@ button[type="submit"]:active {
   padding: 3px;
   border: 2px solid #fe8a39;
 }
+.comment{
+  width: 200px;
+  height: 90%;
+  position: fixed;
+  right: 3px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: none;
+}
+.blog-slider__code_comment {
+  color: #7b7992;
+  margin-bottom: 12px;
+  display: block;
+  font-weight: 300;
+}
+.blog-slider__title_comment {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0d0925;
+  margin-bottom: 20px;
+}
+.blog-slider__text_comment {
+  color: #4e4a67;
+  margin-bottom: 25px;
+  line-height: 1.5em;
+}
+.oneComment{
+  box-shadow: 0px 1px grey;
+  padding: 10px;
+  border-radius: 6px;
+}
+.oneComment:hover{
+  background-color: rgb(235, 235, 235);
+}
+.addComment{
+  position: relative;
+  bottom: 0px;
+  padding: 10px;
+  border-radius: 6px;
+}

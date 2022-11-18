@@ -9,12 +9,24 @@ class Comment extends BaseEntity
     private $pubdate;
     private string $content;
     private int $id_article;
-    private int $id_parent_comment;
+    private ?int $id_parent_comment;
 
      //setters
+     public function setId(string $id): Comment
+     {
+         $this->id = $id;
+         return $this;
+     }
+
      public function setAuthor(string $author): Comment
      {
          $this->author = $author;
+         return $this;
+     }
+
+     public function setContent(string $content): Comment
+     {
+         $this->content = $content;
          return $this;
      }
  
@@ -22,12 +34,6 @@ class Comment extends BaseEntity
      {
          $this->id_article = $id_article;
          return $this;
-     }
- 
-     public function setId_parent_comment(int $id_parent_comment): Comment
-     {
-         $this->id_parent_comment = $id_parent_comment;
-         return $id_parent_comment;
      }
  
      //getters
@@ -56,7 +62,7 @@ class Comment extends BaseEntity
          return $this->Id_article;
      }
  
-     public function getId_parent_comment(): int
+     public function getId_parent_comment(): ?int
      {
          return $this->id_parent_comment;
      }

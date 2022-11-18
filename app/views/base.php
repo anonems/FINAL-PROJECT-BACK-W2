@@ -8,12 +8,7 @@
         <link rel="stylesheet" href="/views/assets/style.css">
     </head>
     <body>
-    <div class="blog-slider">
-        <div class="blog-slider__wrp swiper-wrapper">
-            <?= $_pageContent ?>
-        </div>
-        <div class="blog-slider__pagination"></div>
-    </div>
+        <?= $_pageContent ?>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script><script  src="/views/assets/script.js"></script>
     </body>
