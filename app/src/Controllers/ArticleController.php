@@ -24,13 +24,11 @@ class ArticleController extends AbstractController
      * @return void
      */
     #[Route('/article/{id}', name: "showOne", methods: ["GET"])]
-    public function showOne($id)
+    public function showOneArticle($id)
     {
         $articleManager = new ArticleManager(new PDOFactory());
-        $commentManager = new CommentManager(new PDOFactory());
         $article = $articleManager->getOneArticle($id);
-        $comments = $commentManager->getAllComment($id);
-        $this->render("showOne.php", ["article" => $article, "comments" => $comments], "Un articles");
+        $this->render("showOne.php", ["article" => $article], "Un articles");
     }
     
 }

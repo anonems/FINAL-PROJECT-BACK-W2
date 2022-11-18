@@ -15,16 +15,31 @@ class CommentController extends AbstractController
      * @return void
      */
     #[Route('/article/{id}', name: "showOne", methods: ["POST"])]
-    public function addComment($id)
+    public function setComment($id)
     {
 
-        $contentComment = filter_input(INPUT_POST, "contentComent");
-        $articleId = $id;
+        $content = filter_input(INPUT_POST, "contentComment");
+        $id_article = $id;
+        $id_parent_comment = 1;
+        $author = "test";
 
         $commentManager = new CommentManager(new PDOFactory());
-        $comments = $commentManager->setComment($articleId, $contentComment);
+        $comments = $commentManager->addComment($author, $content, $id_article);
+        $commentChild = $commentManager->addChildComment($author, $content, $id_article, $id_parent_comment);
+        $this->render("showOne.php", [ ], "Un articles");
+    }
 
-        //$this->render("showOne.php", ["article" => $article, "comments" => $comments], "Un articles");
+   /**
+     * @param $id
+     * @return void
+     */
+    #[Route('/article/{id}', name: "showOne", methods: ["GET"])]
+    public function showOne($id)
+    {
+        $commentManager = new CommentManager(new PDOFactory());
+        $comments = $commentManager->getAllComment($id);
+        $childComments = $commentManager->getAllChildComment($id, $id_parent_comment);
+        $this->render("showOne.php", ["comments" => $comments, "childComments" => $childComments], "Un articles");
     }
     
 }
