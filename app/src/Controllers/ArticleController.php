@@ -27,8 +27,11 @@ class ArticleController extends AbstractController
     public function showOneArticle($id)
     {
         $articleManager = new ArticleManager(new PDOFactory());
+        $commentManager = new CommentManager(new PDOFactory());
         $article = $articleManager->getOneArticle($id);
-        $this->render("showOne.php", ["article" => $article], "Un articles");
+        $comments = $commentManager->getAllComment($id);
+        $childComments = $commentManager->getAllChildComment($id);
+        $this->render("showOne.php", ["article" => $article, "comments" => $comments, "childComments" => $childComments], "Un articles");
     }
     
 }

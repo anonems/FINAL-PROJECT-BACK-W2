@@ -39,10 +39,11 @@
                 <span class="blog-slider__code_comment"><?=date('Y-m-d H:i:s',$comment->getPubdate())?> by @<?=$comment->getAuthor()?></span>
                 <div class="blog-slider__text_comment"><?=$comment->getContent()?></div>
                 <form action="/article/<?=$article->getId()?>/" method="post"><input style="width:100%" type="text" name="contentCommmentChild"></form>
-                <?php foreach($childComments as $childComment): ?>
+                <?php foreach($childComments as $childComment): 
+                    if($childComment->getId_parent_comment()==$comment->getId_parent_comment()): ?>
                     <span class="blog-slider__code_comment"><?=date('Y-m-d H:i:s',$childComment->getPubdate())?> by @<?=$childComment->getAuthor()?></span>
                     <div class="blog-slider__text_comment"><?=$childComment->getContent()?></div>
-                <?php endforeach; ?>
+                <?php endif ; endforeach; ?>
             </div>
     <?php 
         endforeach;

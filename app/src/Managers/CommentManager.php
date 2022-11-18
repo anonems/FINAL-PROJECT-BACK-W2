@@ -8,7 +8,7 @@ class CommentManager extends BaseManager
 {
     public function getAllComment($id): array
     {
-        $query = $this->pdo->prepare("SELECT * FROM comment WHERE id_article = :id AND id_parent_comment = NULL ");
+        $query = $this->pdo->prepare("SELECT * FROM comment WHERE id_article = :id AND id_parent_comment = 'NULL' ");
         $query->bindValue('id', $id, \PDO::PARAM_STR);
         $query->execute();
 
@@ -21,11 +21,11 @@ class CommentManager extends BaseManager
         return $comments;
     }
 
-    public function getAllChildComment($id, $id_parent_comment): array
+    public function getAllChildComment($id): array
     {
-        $query = $this->pdo->prepare("SELECT * FROM comment WHERE id_article = :id AND id_parent_comment = :id_parent_comment ");
+        $query = $this->pdo->prepare("SELECT * FROM comment WHERE id_article = :id AND id_parent_comment != 'NULL' ");
         $query->bindValue('id', $id, \PDO::PARAM_STR);
-        $query->bindValue('id_parent_comment', $id_parent_comment, \PDO::PARAM_STR);
+        //$query->bindValue('id_parent_comment', $id_parent_comment, \PDO::PARAM_STR);
         $query->execute();
 
         $comments = [];
