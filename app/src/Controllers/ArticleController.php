@@ -12,25 +12,23 @@ class ArticleController extends AbstractController
     #[Route('/', name: "homepage", methods: ["GET"])]
     public function home()
     {
-        $manger = new ArticleManager(new PDOFactory());
-        $articles = $manger->getAllArticles();
+        $manager = new ArticleManager(new PDOFactory());
+        $articles = $manager->getAllArticles();
 
-        $this->render("home.php", [
-            "articles" => $articles,
-            "trucs" => "je suis une string",
-            "machin" => 42
-        ], "Tous les articles");
+        $this->render("home.php", ["articles" => $articles], "Tous les articles");
     }
 
-    // /**
-    //  * @param $id
-    //  * @param $truc
-    //  * @param $machin
-    //  * @return void
-    //  */
-    // #[Route('/article/{id}/{truc}/{machin}', name: "francis", methods: ["GET"])]
-    // public function showOne($id, $truc, $machin)
-    // {
-    //     var_dump($id, $truc);
-    // }
+    /**
+     * @param $id
+     * @return void
+     */
+    #[Route('/article/{id}', name: "showOne", methods: ["GET"])]
+    public function showOne($id)
+    {
+        $manager = new ArticleManager(new PDOFactory());
+        $article = $manager->getOneArticle($id);
+        echo $id;
+
+        $this->render("showOne.php", ["article" => $article], "Un articles");
+    }
 }

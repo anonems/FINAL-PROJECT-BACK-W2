@@ -11,15 +11,11 @@ foreach($articles as $article):
                 <span class="blog-slider__code"><?=date('Y-m-d H:i:s',$article->getPubdate())?> by @<?=$article->getAuthor()?> <a id='login_bt' style='text-decoration:none;' href='./index.php'>HOME</a></span>
                 <div class="blog-slider__title"><?=$article->getTitle()?></div>
                 <div class="blog-slider__text"><?=$article->getDescript()?></div>
-                <!-- <a  class="blog-slider__button">READ MORE</a> -->
+                <a href="views/showOne.php?id=<?=$article->getId()?>" class="blog-slider__button">READ MORE</a>
             </div>
         </div>
 <?php };
 endforeach;
 
-    // if(!isset($_SESSION['connecte'])){ //not connected => login/signin
-    //     include('./auth/login.php');
-    // }elseif($_SESSION['connecte']){ //connected => home blog
-    //     include('./blog/blog.php');
-    // }
+
             

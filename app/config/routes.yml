@@ -3,3 +3,15 @@ index:
     controller: App\Controllers\articleController
     action: home
 
+showOne:
+    path: /article/{id}/
+    controller: App\Controllers\articleController
+    action: showOne
+    methods:
+        - GET
+        - POST
+
+# login:
+#     path: /login
+#     controller: App\Controllers\SecurityController
+#     action: login
