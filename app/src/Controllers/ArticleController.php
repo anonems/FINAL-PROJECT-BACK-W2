@@ -14,7 +14,7 @@ class ArticleController extends AbstractController
     public function home()
     {
         $articleManager = new ArticleManager(new PDOFactory());
-        $articles = $articleManager->getAllArticles();
+        $articles = $articleManager->readAllArticles();
 
         $this->render("home.php", ["articles" => $articles], "Tous les articles");
     }
@@ -28,8 +28,8 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager(new PDOFactory());
         $commentManager = new CommentManager(new PDOFactory());
-        $article = $articleManager->getOneArticle($id);
-        $comments = $commentManager->getAllComment($id);
+        $article = $articleManager->readOneArticle($id);
+        $comments = $commentManager->readAllComment($id);
         $this->render("showOne.php", ["article" => $article, "comments" => $comments], "Un articles");
     }
     

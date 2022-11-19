@@ -74,7 +74,7 @@ CREATE TABLE `user` (
   `username` varchar(30) NOT NULL,
   `pwd` varchar(1000) NOT NULL,
   `joindate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `role` varchar(5) NOT NULL DEFAULT 'low'
+  `rol` varchar(5) NULL DEFAULT 'low'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --

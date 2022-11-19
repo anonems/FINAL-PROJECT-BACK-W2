@@ -6,7 +6,7 @@ use App\Entitys\Article;
 
 class ArticleManager extends BaseManager
 {
-    public function getAllArticles(): array
+    public function readAllArticles(): array
     {
         $query = $this->pdo->query("SELECT * FROM article");
 
@@ -19,10 +19,10 @@ class ArticleManager extends BaseManager
         return $users;
     }
 
-    public function getOneArticle($id): Article
+    public function readOneArticle(int $id): Article
     {
     $query = $this->pdo->prepare("SELECT * FROM article WHERE id = :id");
-    $query->bindValue('id', $id, \PDO::PARAM_STR);
+    $query->bindValue('id', $id, \PDO::PARAM_INT);
     $query->execute();
     $data = $query->fetch(\PDO::FETCH_ASSOC);
     $article = new Article($data);

@@ -407,3 +407,11 @@ button[type="submit"]:active {
   font-size: 12px;
   color: #4e4a67;
 }
+#del_btn{
+  font-size:10px;
+  display: block;
+  text-align:right;
+  border:none;
+  background:transparent;
+  margin-right: 0px;
+}
