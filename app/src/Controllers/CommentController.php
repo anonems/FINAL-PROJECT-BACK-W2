@@ -20,13 +20,13 @@ class CommentController extends AbstractController
 
         $content = filter_input(INPUT_POST, "contentComment");
         $id_article = $id;
-        $id_parent_comment = 1;
-        $author = "test";
+        $id_parent_comment = filter_input(INPUT_POST, "id_parent_comment");
+        $author = "test";//inserer l'utilisateur actuelle de la session.
 
         $commentManager = new CommentManager(new PDOFactory());
-        $comments = $commentManager->addComment($author, $content, $id_article);
-        $commentChild = $commentManager->addChildComment($author, $content, $id_article, $id_parent_comment);
-        $this->render("showOne.php", [], "Un articles");
+        $comments = $commentManager->addComment($author, $content, $id_article, $id_parent_comment);
+        header("location: /article/" . $id );
+        //$this->render("showOne.php", [], "Un article");
     }
     
 }

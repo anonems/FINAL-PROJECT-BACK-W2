@@ -33,23 +33,14 @@ class CommentManager extends BaseManager
         return $comment;
     }
 
-    public function addComment($author, $content, $id_article): void
+    public function addComment( string $author, string $content, int $id_article, ?int $id_parent_comment): void
     {
-        $query = $this->pdo->prepare("INSERT INTO comment (author, content, id_article) VALUES (:author, :content, :id_article) ");
-        $query->bindValue('author', $author, \PDO::PARAM_STR);
-        $query->bindValue('content', $content, \PDO::PARAM_STR);
-        $query->bindValue('id_article', $id_article, \PDO::PARAM_STR);
-        $query->execute();      
-    }
-
-    public function addChildComment($author, $content, $id_article, $id_parent_comment): void
-    {
-        $query = $this->pdo->prepare("INSERT INTO comment (author, content, id_article, id_parent_comment) VALUES (:author, :content, :id_article, :id_parent_content) ");
+        $query = $this->pdo->prepare("INSERT INTO comment (author, content, id_article, id_parent_comment) VALUES (:author, :content, :id_article, :id_parent_comment) ");
         $query->bindValue('author', $author, \PDO::PARAM_STR);
         $query->bindValue('content', $content, \PDO::PARAM_STR);
         $query->bindValue('id_article', $id_article, \PDO::PARAM_STR);
         $query->bindValue('id_parent_comment', $id_parent_comment, \PDO::PARAM_STR);
         $query->execute();      
     }
-
+    
 }

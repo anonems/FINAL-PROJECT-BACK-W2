@@ -66,6 +66,12 @@ class Article extends BaseEntity
         return $this;
     }
 
+    public function setPubdate(string $pubdate): Article
+    {
+        $this->pubdate = $pubdate;
+        return $this;
+    }
+
     //getters
     public function getId(): int
     {
