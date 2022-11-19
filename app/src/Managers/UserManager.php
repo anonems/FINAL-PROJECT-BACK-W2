@@ -16,13 +16,26 @@ class UserManager extends BaseManager
         $query->execute();      
     }
 
-    public function readUser(int $id): array
+    public function readUser(string $username)
     {
-        $query = $this->pdo->prepare("SELECT * FROM user WHERE id = :id");
-        $query->bindValue('id', $id, \PDO::PARAM_INT);
+        $query = $this->pdo->prepare("SELECT * FROM user WHERE username = :username");
+        $query->bindValue('username', $username, \PDO::PARAM_INT);
         $query->execute();  
         $data = $query->fetch(\PDO::FETCH_ASSOC);
         $user = new User($data);    
+
+        return $user;
+    }
+
+    public function readAllUser(): array
+    {
+        $query = $this->pdo->query("SELECT * FROM user");
+
+        $users = [];
+
+        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $users[] = new User($data);
+        }
 
         return $users;
     }

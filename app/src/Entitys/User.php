@@ -25,6 +25,17 @@ class User extends BaseEntity
         $this->role = $role;
         return $this;
     }
+    public function setPwd(string $pwd): User
+    {
+        $this->pwd = $pwd;
+        return $this;
+    }
+
+    public function setJoindate(string $joindate): User
+    {
+        $this->joindate = $joindate;
+        return $this;
+    }
 
     //getters
     public function getId(): int
@@ -51,11 +62,20 @@ class User extends BaseEntity
     {
         return $this->role;
     }
+    public function getPwd(): string
+    {
+        return $this->pwd;
+    }
 
     //midelwares
-    public function passwordMatch(): bool
-    {
-        //...
+    public function passwordMatch(string $pwd_hash): bool
+    { 
+        if (password_verify($pwd, getPwd())){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
