@@ -26,7 +26,7 @@ class CommentController extends AbstractController
         $commentManager = new CommentManager(new PDOFactory());
         $comments = $commentManager->addComment($author, $content, $id_article);
         $commentChild = $commentManager->addChildComment($author, $content, $id_article, $id_parent_comment);
-        $this->render("showOne.php", [ ], "Un articles");
+        $this->render("showOne.php", [], "Un articles");
     }
     
 }

@@ -35,6 +35,11 @@ class Comment extends BaseEntity
          $this->id_article = $id_article;
          return $this;
      }
+     public function setId_parent_comment(?int $id_parent_comment): Comment
+     {
+         $this->id_parent_comment = $id_parent_comment;
+         return $this;
+     }
  
      //getters
      public function getId(): int

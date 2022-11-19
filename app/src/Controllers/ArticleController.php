@@ -30,8 +30,7 @@ class ArticleController extends AbstractController
         $commentManager = new CommentManager(new PDOFactory());
         $article = $articleManager->getOneArticle($id);
         $comments = $commentManager->getAllComment($id);
-        $childComments = $commentManager->getAllChildComment($id);
-        $this->render("showOne.php", ["article" => $article, "comments" => $comments, "childComments" => $childComments], "Un articles");
+        $this->render("showOne.php", ["article" => $article, "comments" => $comments], "Un articles");
     }
     
 }

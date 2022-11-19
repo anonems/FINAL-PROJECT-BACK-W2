@@ -21,7 +21,7 @@
     <div class="blog-slider__pagination"></div>
 </div>
 
-<!-- affiche tous les commentaires -->
+<!-- affiche tous les commentaires et ses enfants-->
 <div class="comment">
     <div class="blog-slider__title_comment">Comments</div>
     <div class="addComment">
@@ -36,17 +36,28 @@
         foreach($comments as $comment): 
     ?>
             <div class="oneComment">
-                <span class="blog-slider__code_comment"><?=date('Y-m-d H:i:s',$comment->getPubdate())?> by @<?=$comment->getAuthor()?></span>
-                <div class="blog-slider__text_comment"><?=$comment->getContent()?></div>
-                <form action="/article/<?=$article->getId()?>/" method="post"><input style="width:100%" type="text" name="contentCommmentChild"></form>
-                <?php foreach($childComments as $childComment): 
-                    if($childComment->getId_parent_comment()==$comment->getId_parent_comment()): ?>
-                    <span class="blog-slider__code_comment"><?=date('Y-m-d H:i:s',$childComment->getPubdate())?> by @<?=$childComment->getAuthor()?></span>
-                    <div class="blog-slider__text_comment"><?=$childComment->getContent()?></div>
-                <?php endif ; endforeach; ?>
+                <?php   if($comment->getId_parent_comment()==NULL):
+                ?>
+                            <div class="parent_comment">
+                                <span class="blog-slider__code_parent_comment"><?=date('Y-m-d H:i:s',$comment->getPubdate())?> by @<?=$comment->getAuthor()?></span>
+                                <div class="blog-slider__text_parent_comment"><?=$comment->getContent()?></div>
+                                <form action="/article/<?=$article->getId()?>/" method="post"><input  type="text" name="contentCommmentChild"></form>
+                            </div>
+                <?php
+                            foreach($comments as $childComment): 
+                                if($comment->getId()==$childComment->getId_parent_comment()): 
+                ?>
+                                    <div class="child_comment">
+                                        <span class="blog-slider__code_child_comment"><?=date('Y-m-d H:i:s',$childComment->getPubdate())?> by @<?=$childComment->getAuthor()?></span>
+                                        <div class="blog-slider__text_child_comment"><?=$childComment->getContent()?></div>
+                                    </div>
+                <?php           endif ;
+                            endforeach;
+                        endif;
+                ?>
             </div>
-    <?php 
-        endforeach;
+    <?php
+    endforeach;
     ?>
 </div>
 
