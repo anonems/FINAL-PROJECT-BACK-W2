@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Factorys\PDOFactory;
 use App\Managers\UserManager;
+use App\Managers\SessionManager;
 use App\Routes\Route;
 
 class UserController extends AbstractController
@@ -11,7 +12,10 @@ class UserController extends AbstractController
     #[Route('/login', name: "login", methods: ["GET"])]
     public function login()
     {
-        $this->render("login.php", [], "Login page");
+        $sessionManager = new SessionManager();
+        $logStatut = $sessionManager->check_login();
+
+        $this->render("login.php", [], "Login page", $logStatut);
     }
 
     #[Route('/login', name: "login", methods: ["POST"])]
@@ -20,8 +24,12 @@ class UserController extends AbstractController
         $username = filter_input(INPUT_POST, "username");
         $pwd = filter_input(INPUT_POST, "pwd");
         $pwd_hash =  password_hash($pwd, PASSWORD_DEFAULT);
+
         $userManager = new UserManager(new PDOFactory());
+        $sessionManager = new SessionManager();
+
         $getUser = $userManager->readUser($username);
+
         $signin = filter_input(INPUT_POST, "signin");
         $login = filter_input(INPUT_POST, "login");
         $resmdp = filter_input(INPUT_POST, "resmdp");
@@ -37,8 +45,8 @@ class UserController extends AbstractController
         }
         if($login){
             if (password_verify($pwd, $getUser->getPwd())){
+                $sessionManager->login($username);
                 header("location: /crud" );
-                return true;
             }
             else{
                 header("location: /login" );

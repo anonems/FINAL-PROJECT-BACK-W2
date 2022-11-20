@@ -312,7 +312,7 @@ button[type="submit"]:active {
   background: white;
   border: 2px solid #fe8a39;
 }
-#signin_bt, #login_bt, #respwd_bt{
+#signin_bt, #login_bt, #respwd_bt, #head_btn{
   border-radius: 10px;
   background: #fe8a39;
   color: white;
@@ -320,7 +320,7 @@ button[type="submit"]:active {
   border: none;
   margin: 20px;
 }
-#signin_bt:hover, #login_bt:hover, #respwd_bt:hover{
+#signin_bt:hover, #login_bt:hover, #respwd_bt:hover, #head_btn:hover{
   border-radius: 10px;
   background: white;
   color: black;
@@ -328,7 +328,7 @@ button[type="submit"]:active {
   border: 2px solid black;
   cursor:pointer
 }
-#signin_bt:active, #login_bt:active, #respwd_bt:active{
+#signin_bt:active, #login_bt:active, #respwd_bt:active, #head_btn:active{
   border-radius: 10px;
   background: white;
   color: #fe8a39;
