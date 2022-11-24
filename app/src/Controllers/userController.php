@@ -28,20 +28,18 @@ class UserController extends AbstractController
         $userManager = new UserManager(new PDOFactory());
         $sessionManager = new SessionManager();
 
-        $getUser = $userManager->readUser($username);
-
         $signin = filter_input(INPUT_POST, "signin");
         $login = filter_input(INPUT_POST, "login");
         $resmdp = filter_input(INPUT_POST, "resmdp");
 
         if($signin){
-            if($getUser->getUsername()){
-                //echo "error";
-                return true;
+            if($userManager->readUser($username)){
+                echo "<script type='text/javascript'>alert('this pseudo already use, please choice an other.'); location.href='/login'</script>";
+                //var_dump($userManager->readUser($username));
             }else{
                 $userManager->creatUser($username, $pwd_hash);
+                header("location: /login" );
             }
-            header("location: /login" );
         }
         if($login){
             if (password_verify($pwd, $getUser->getPwd())){
