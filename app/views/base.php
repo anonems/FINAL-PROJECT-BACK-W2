@@ -10,7 +10,6 @@
     </head>
     <body>
         <?php 
-        var_dump($_logStatut);
         if (!$_logStatut){
             echo "<a id='head_btn' style='position:fixed; text-decoration:none' href='/login'>Login</a>";
         }else{

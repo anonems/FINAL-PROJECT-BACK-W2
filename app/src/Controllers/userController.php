@@ -24,7 +24,7 @@ class UserController extends AbstractController
         $sessionManager = new SessionManager();
         //$logStatut = $sessionManager->check_login();
         $sessionManager->logout();
-        header("location: /login" );
+        header("location: /" );
 
         //$this->render("logout.php", [], "Logout page", $logStatut);
     }

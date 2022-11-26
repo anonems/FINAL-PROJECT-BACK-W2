@@ -33,7 +33,12 @@ class SessionManager extends BaseManager
         unset($this->username);
         session_destroy();
         $this->connected = false;
-        exit();
+    }
+
+    public function setSessionUsername(): SessionManager
+    {
+        $this->username = $_SESSION['username'];
+        return $this;
     }
 
     public function check_login() //savoir si l'utilisateur est connecté
@@ -46,6 +51,13 @@ class SessionManager extends BaseManager
             unset($this->username);
             $this->connected = false;
             return false;
+        }
+    }
+
+    public function getSessionUsername()
+    {
+        if(isset($_SESSION["username"])){
+            return $_SESSION['username'];
         }
     }
 
