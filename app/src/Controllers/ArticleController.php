@@ -20,7 +20,11 @@ class ArticleController extends AbstractController
         $sessionManager = new SessionManager();
         $logStatut = $sessionManager->check_login();
         //echo $sessionManager->getUsername();
-        $this->render("home.php", ["articles" => $articles], "Tous les articles", $logStatut);
+        if($logStatut){
+            $this->render("crud.php", [], "crud page", $logStatut);
+        }else{
+            $this->render("home.php", ["articles" => $articles], "Tous les articles", $logStatut);
+        }
     }
 
     /**
