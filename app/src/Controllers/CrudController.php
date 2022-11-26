@@ -29,6 +29,10 @@ class CrudController extends AbstractController
     {
         $sessionManager = new SessionManager();
         $logStatut = $sessionManager->check_login();
+        $username = $sessionManager->getSessionUsername();
+
+        $articleManager = new ArticleManager(new PDOFactory());
+        $articles = $articleManager->readAllArticlesFromUser($username);
 
         if($logStatut){
         
@@ -37,12 +41,9 @@ class CrudController extends AbstractController
             }
             else if(isset($_POST['read_bt'])) {
                 header('location: /read');
-                // $articleManager = new ArticleManager(new PDOFactory());
-                // $articles = $articleManager->readAllArticles();
-                // $this->render("home.php", [["articles" => $articles]], "All article.", $logStatut);
             }
             else if(isset($_POST['update_bt'])) {
-                $this->render("update.php", [], "Update an article.", $logStatut);
+                $this->render("update.php", ["articles" => $articles], "Update an article.", $logStatut);
             }
             else if(isset($_POST['delete_bt'])) {
                 $this->render("delete.php", [], "Delete page.", $logStatut);

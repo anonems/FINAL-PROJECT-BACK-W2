@@ -18,9 +18,25 @@ class ArticleManager extends BaseManager
         $query->execute();
 
     }
+
     public function readAllArticles(): array
     {
         $query = $this->pdo->query("SELECT * FROM article");
+
+        $users = [];
+
+        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $users[] = new Article($data);
+        }
+
+        return $users;
+    }
+
+    public function readAllArticlesFromUser(string $username): array
+    {
+        $query = $this->pdo->prepare("SELECT * FROM article WHERE author = :username");
+        $query->bindValue('username', $username, \PDO::PARAM_STR);
+        $query->execute();
 
         $users = [];
 
