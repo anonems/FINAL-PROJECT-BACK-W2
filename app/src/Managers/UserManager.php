@@ -30,7 +30,7 @@ class UserManager extends BaseManager
         return $users;
     }
 
-    public function readAllUser($username): array
+    public function readAllUser(): array
     {
         $query = $this->pdo->query("SELECT * FROM user");
 

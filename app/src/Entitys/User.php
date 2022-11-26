@@ -11,7 +11,7 @@ class User extends BaseEntity
     private string $username;
     private string $pwd;
     private $joindate;
-    private string $role;
+    private string $rol;
 
     //setters
     public function setUsername(string $username): User
@@ -20,11 +20,18 @@ class User extends BaseEntity
         return $this;
     }
 
-    public function setRole(string $role): User
+    public function setRol(string $rol): User
     {
-        $this->role = $role;
+        $this->rol = $rol;
         return $this;
     }
+
+    public function setId(string $id): User
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function setPwd(string $pwd): User
     {
         $this->pwd = $pwd;
@@ -58,9 +65,9 @@ class User extends BaseEntity
         return $this->joindate;
     }
 
-    public function getRole(): string
+    public function getRol(): string
     {
-        return $this->role;
+        return $this->rol;
     }
     public function getPwd(): string
     {

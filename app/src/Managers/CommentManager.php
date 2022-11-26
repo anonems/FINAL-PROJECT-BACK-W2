@@ -30,6 +30,20 @@ class CommentManager extends BaseManager
 
         return $comments;
     }
+
+    public function readAllComments(): array
+    {
+        $query = $this->pdo->query("SELECT * FROM comment ");
+ 
+
+        $comments = [];
+
+        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+            $comments[] = new Comment($data);
+        }
+
+        return $comments;
+    }
     
     public function deleteComment( string $id): void
     {

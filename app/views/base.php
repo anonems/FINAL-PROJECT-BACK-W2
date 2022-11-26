@@ -14,10 +14,10 @@
             echo "<a id='head_btn' style='position:fixed; text-decoration:none' href='/login'>Login</a>";
         }else{
             echo "<a id='head_btn' style='position:fixed; text-decoration:none' href='/logout'>Logout</a>";
+            echo "<a id='head_btn' style='position:fixed; text-decoration:none; left:200px' href='/admin'>Admin</a>";
         }
         ?>
         <a id='head_btn' style='position:fixed; text-decoration:none; left:100px' href='/'>Home</a>
-        <a id='head_btn' style='position:fixed; text-decoration:none; left:200px' href='/admin'>Admin</a>
 
         <?= $_pageContent ?>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
