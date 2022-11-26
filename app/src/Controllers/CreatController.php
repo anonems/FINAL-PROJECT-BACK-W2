@@ -14,7 +14,7 @@ class CreatController extends AbstractController
     public function creat_post()
     {
         $articleManager = new ArticleManager(new PDOFactory());
-        $sessionManager = new SessionManager(new PDOFactory());
+        $sessionManager = new SessionManager();
 
         $username = $sessionManager->getSessionUsername();
 

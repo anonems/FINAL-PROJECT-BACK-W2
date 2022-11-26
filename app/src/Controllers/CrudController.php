@@ -46,7 +46,7 @@ class CrudController extends AbstractController
                 $this->render("update.php", ["articles" => $articles], "Update an article.", $logStatut);
             }
             else if(isset($_POST['delete_bt'])) {
-                $this->render("delete.php", [], "Delete page.", $logStatut);
+                $this->render("delete.php", ["articles" => $articles], "Delete page.", $logStatut);
             }
 
         }

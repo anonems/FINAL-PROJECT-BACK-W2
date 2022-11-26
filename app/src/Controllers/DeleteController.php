@@ -3,38 +3,29 @@
 namespace App\Controllers;
 
 use App\Factorys\PDOFactory;
-use App\Managers\UserManager;
+use App\Managers\ArticleManager;
+use App\Managers\CommentManager;
 use App\Managers\SessionManager;
 use App\Routes\Route;
 
 class DeleteController extends AbstractController
 {
 
-    #[Route('/creat', name: "crud", methods: ["POST"])]
-    public function crud_form()
+    #[Route('/delete', name: "delete", methods: ["POST"])]
+    public function delete()
     {
-        $sessionManager = new SessionManager();
-        $logStatut = $sessionManager->check_login();
+        $id = filter_input(INPUT_POST, "choice");
 
-        if($logStatut){
+
+        $articleManager = new ArticleManager(new PDOFactory());
+        $articleManager->deleteArticle($id);
+
+        $commentManager = new CommentManager(new PDOFactory());
+        $commentManager->deleteCommentFromArticle($id);
+
+        header('location: /');
+
         
-            if(isset($_POST['create_bt'])) {
-                $this->render("creat.php", [], "Post an article.", $logStatut);
-            }
-            else if(isset($_POST['read_bt'])) {
-                $this->render("home.php", [], "All article.", $logStatut);
-            }
-            else if(isset($_POST['update_bt'])) {
-                $this->render("update.php", [], "Update an article.", $logStatut);
-            }
-            else if(isset($_POST['delete_bt'])) {
-                $this->render("delete.php", [], "Delete page.", $logStatut);
-            }
-
-        }
-        else{
-            $this->render("login.php", [], "Login page", $logStatut);
-        }
 
     }
 

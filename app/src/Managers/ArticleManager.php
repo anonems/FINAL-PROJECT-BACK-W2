@@ -49,13 +49,13 @@ class ArticleManager extends BaseManager
 
     public function readOneArticle(int $id): Article
     {
-    $query = $this->pdo->prepare("SELECT * FROM article WHERE id = :id");
-    $query->bindValue('id', $id, \PDO::PARAM_INT);
-    $query->execute();
-    $data = $query->fetch(\PDO::FETCH_ASSOC);
-    $article = new Article($data);
-    
-    return $article;
+        $query = $this->pdo->prepare("SELECT * FROM article WHERE id = :id");
+        $query->bindValue('id', $id, \PDO::PARAM_INT);
+        $query->execute();
+        $data = $query->fetch(\PDO::FETCH_ASSOC);
+        $article = new Article($data);
+        
+        return $article;
     }
 
     public function readOneArticleFromTitle(string $title): array
@@ -70,6 +70,13 @@ class ArticleManager extends BaseManager
         }
 
         return $users;
+    }
+
+    public function deleteArticle(int $id): void
+    {
+        $query = $this->pdo->prepare("DELETE FROM article WHERE id = :id");
+        $query->bindValue('id', $id, \PDO::PARAM_INT);
+        $query->execute();        
     }
 
 }
