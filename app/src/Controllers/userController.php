@@ -18,6 +18,17 @@ class UserController extends AbstractController
         $this->render("login.php", [], "Login page", $logStatut);
     }
 
+    #[Route('/logout', name: "logout", methods: ["GET"])]
+    public function logout()
+    {
+        $sessionManager = new SessionManager();
+        //$logStatut = $sessionManager->check_login();
+        $sessionManager->logout();
+        header("location: /login" );
+
+        //$this->render("logout.php", [], "Logout page", $logStatut);
+    }
+
     #[Route('/login', name: "login", methods: ["POST"])]
     public function signin()
     {
@@ -31,24 +42,24 @@ class UserController extends AbstractController
         $signin = filter_input(INPUT_POST, "signin");
         $login = filter_input(INPUT_POST, "login");
         $resmdp = filter_input(INPUT_POST, "resmdp");
+        $getUser = $userManager->readUser($username);
 
         if($signin){
-            if($userManager->readUser($username)){
+            if($getUser){
                 echo "<script type='text/javascript'>alert('this pseudo already use, please choice an other.'); location.href='/login'</script>";
-                //var_dump($userManager->readUser($username));
             }else{
                 $userManager->creatUser($username, $pwd_hash);
                 header("location: /login" );
             }
         }
         if($login){
-            if (password_verify($pwd, $getUser->getPwd())){
-                $sessionManager->login($username);
-                header("location: /crud" );
+            //var_dump($getUser[0]);
+            if (!password_verify($pwd, $getUser[0]->getPwd())){
+                echo "<script type='text/javascript'>alert('Password an username don't match.'); </script>";
             }
-            else{
-                header("location: /login" );
-                return false;
+            elseif(password_verify($pwd, $getUser[0]->getPwd())){
+                $sessionManager->login($username);
+                header("location: /" );
             }
         }
         if($resmdp){

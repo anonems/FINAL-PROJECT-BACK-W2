@@ -36,7 +36,7 @@ class ArticleController extends AbstractController
         $logStatut = $sessionManager->check_login();
         $article = $articleManager->readOneArticle($id);
         $comments = $commentManager->readAllComment($id);
-        $this->render("showOne.php", ["article" => $article, "comments" => $comments], "Un article", $logStatut);
+        $this->render("showOne.php", ["article" => $article, "comments" => $comments, "logStatut" => $logStatut], "Un article", $logStatut);
     }
     
 }

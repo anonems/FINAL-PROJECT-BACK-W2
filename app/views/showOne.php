@@ -41,7 +41,11 @@
                 <div class="oneComment">
                     <div class="parent_comment">
                         <span class="blog-slider__code_parent_comment">@<?=$comment->getAuthor()?></span>
-                        <form action="/article/<?=$article->getId()?>/" method="post"><input type="hidden" name="comment_id" value="<?=$comment->getId()?>"><button id="del_btn" type="submit"><span class="material-symbols-outlined" id="del_btn">delete</span></button></form>
+                    <?php
+                    if($logStatut){
+                        echo "<form action='/article/".$article->getId()."/' method='post'><input type='hidden' name='comment_id' value='".$comment->getId()."'><button id='del_btn' type='submit'><span class='material-symbols-outlined' id='del_btn'>delete</span></button></form>";
+                    }
+                    ?> 
                         <div class="blog-slider__text_parent_comment"><?=$comment->getContent()?></div>
                         <span class="child_comment_date"><?=$comment->getPubdate()?></span>
                         <form action="/article/<?=$article->getId()?>/" method="post">
@@ -55,7 +59,11 @@
             ?>
                             <div class="child_comment">
                                 <span class="blog-slider__code_child_comment">@<?=$childComment->getAuthor()?></span>
-                                <form action="/article/<?=$article->getId()?>/" method="post"><input type="hidden" name="comment_id" value="<?=$childComment->getId()?>"><button id="del_btn" type="submit"><span class="material-symbols-outlined" id="del_btn">delete</span></button></form>
+                                <?php
+                                if($logStatut){
+                                    echo "<form action='/article/".$article->getId()."/' method='post'><input type='hidden' name='comment_id' value='".$childComment->getId()."'><button id='del_btn' type='submit'><span class='material-symbols-outlined' id='del_btn'>delete</span></button></form>";
+                                }
+                                ?>
                                 <div class="blog-slider__text_child_comment"><?=$childComment->getContent()?></div>
                                 <span class="child_comment_date"><?=$childComment->getPubdate()?></span>
                             </div>

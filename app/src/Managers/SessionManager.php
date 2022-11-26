@@ -12,7 +12,7 @@ class SessionManager extends BaseManager
 
     function __construct()
     {
-        //session_start();
+        if(!isset($_SESSION["username"])){session_start();};
         $this->check_login();
     }
 
@@ -23,7 +23,6 @@ class SessionManager extends BaseManager
 
     public function login($user) //démarrer la session
     {
-        session_start();
         $this->username = $_SESSION["username"] = $user;
         $this->connected = true;
     }
@@ -32,7 +31,9 @@ class SessionManager extends BaseManager
     {
         unset($_SESSION["username"]);
         unset($this->username);
+        session_destroy();
         $this->connected = false;
+        exit();
     }
 
     public function check_login() //savoir si l'utilisateur est connecté
@@ -50,4 +51,4 @@ class SessionManager extends BaseManager
 
 }
 
-$session = new SessionManager();
+//$session = new SessionManager();

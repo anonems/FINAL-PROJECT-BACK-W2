@@ -1,7 +1,6 @@
 <div class="blog-slider">
     <div class="blog-slider__wrp swiper-wrapper">
         <?php
-
         foreach($articles as $article): 
             if($article->getStatut()){
                 ?>
