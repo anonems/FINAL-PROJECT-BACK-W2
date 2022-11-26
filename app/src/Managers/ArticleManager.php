@@ -79,4 +79,18 @@ class ArticleManager extends BaseManager
         $query->execute();        
     }
 
+    public function updateArticle($id, $username, $title, $content, $category, $illustration, $descript): void
+    {
+        $query = $this->pdo->prepare("UPDATE article SET author = :username, title = :title, content = :content, category = :category, illustration = :illustration, descript = :descript WHERE id = :id ");
+        $query->bindValue('id', $id, \PDO::PARAM_STR);
+        $query->bindValue('username', $username, \PDO::PARAM_STR);
+        $query->bindValue('title', $title, \PDO::PARAM_STR);
+        $query->bindValue('content', $content, \PDO::PARAM_STR);
+        $query->bindValue('category', $category, \PDO::PARAM_STR);
+        $query->bindValue('illustration', $illustration, \PDO::PARAM_STR);
+        $query->bindValue('descript', $descript, \PDO::PARAM_STR);
+        $query->execute();
+
+    }
+
 }

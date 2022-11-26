@@ -10,17 +10,39 @@ use App\Routes\Route;
 class UpdateController extends AbstractController
 {
 
-    #[Route('/update', name: "update", methods: ["GET"])]
+    #[Route('/update', name: "update", methods: ["POST"])]
     public function update()
     {
+
+        $id = filter_input(INPUT_POST, "choice");
+
         $articleManager = new ArticleManager(new PDOFactory());
-        $articles = $articleManager->readAllArticles();
+        $article = $articleManager->readOneArticle($id);
 
         $sessionManager = new SessionManager();
         $logStatut = $sessionManager->check_login();
 
-        $this->render("update.php", ["articles" => $articles], "Tous les articles", $logStatut);
+        $this->render("updateOne.php", ["article" => $article, "article_id" => $id], "Update one article", $logStatut);
         
+    }
+
+    #[Route('/updateOne/{id}', name: "update", methods: ["POST"])]
+    public function updateOne($id)
+    {
+        $sessionManager = new SessionManager();
+        $username = $sessionManager->getSessionUsername();
+
+        $title = filter_input(INPUT_POST, "title");
+        $content = filter_input(INPUT_POST, "content");
+        $category = filter_input(INPUT_POST, "category");
+        $illustration = filter_input(INPUT_POST, "illustration");
+        $descript = filter_input(INPUT_POST, "descript");
+        
+        $articleManager = new ArticleManager(new PDOFactory());
+
+        $articleManager->updateArticle($id, $username, $title, $content, $category, $illustration, $descript);
+        
+        header('location: /');
     }
 
 

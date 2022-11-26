@@ -17,6 +17,8 @@
         }
         ?>
         <a id='head_btn' style='position:fixed; text-decoration:none; left:100px' href='/'>Home</a>
+        <a id='head_btn' style='position:fixed; text-decoration:none; left:200px' href='/admin'>Admin</a>
+
         <?= $_pageContent ?>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script><script  src="/views/assets/script.js"></script>
