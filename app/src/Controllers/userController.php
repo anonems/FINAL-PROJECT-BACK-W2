@@ -55,7 +55,7 @@ class UserController extends AbstractController
         if($login){
             //var_dump($getUser[0]);
             if (!password_verify($pwd, $getUser[0]->getPwd())){
-                echo "<script type='text/javascript'>alert('Password an username don\'t match.'); </script>";
+                echo "<script type='text/javascript'>alert('Password an username don't match.'); </script>";
             }
             elseif(password_verify($pwd, $getUser[0]->getPwd())){
                 $sessionManager->login($username);
