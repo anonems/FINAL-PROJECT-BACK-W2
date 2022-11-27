@@ -42,13 +42,11 @@ class UserManager extends BaseManager
         return $users;
     }
 
-    public function updateUser(string $username, string $pwd, string $rol, int $id): void
+    public function updateRol(string $username, string $rol): void
     {
-        $query = $this->pdo->prepare("UPDATE user  SET username=:username, pwd=:pwd, rol=:rol) WHERE id=:id ");
+        $query = $this->pdo->prepare("UPDATE user  SET rol=:rol WHERE username = :username");
         $query->bindValue('username', $username, \PDO::PARAM_STR);
-        $query->bindValue('pwd', $pwd, \PDO::PARAM_STR);
         $query->bindValue('rol', $rol, \PDO::PARAM_STR);
-        $query->bindValue('id', $id, \PDO::PARAM_STR);
 
         $query->execute();      
     }

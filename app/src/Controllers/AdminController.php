@@ -56,8 +56,10 @@ class AdminController extends AbstractController
         $user = $userManager->readUser($username);
 
         $id_u = filter_input(INPUT_POST, "user_id");
+        $id_r = filter_input(INPUT_POST, "rol");
         $id_a = filter_input(INPUT_POST, "article_id");
         $id_c = filter_input(INPUT_POST, "comment_id");
+        $id_u_h = filter_input(INPUT_POST, "usernamehidden");
 
         if($logStatut && $user[0]->getRol() === "hight"){
             if($id_c){
@@ -66,6 +68,8 @@ class AdminController extends AbstractController
                 $articleManager->deleteArticle($id_a);
             }elseif($id_u){
                 $userManager->deleteUser($id_u);
+            }elseif($id_r){
+                $userManager->updateRol($id_u_h, $id_r);
             }
             header("location: /admin");        
         }else{
