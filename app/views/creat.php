@@ -18,7 +18,7 @@
                 </div>
                 <div style="grid-row:1; grid-column:2" >
                 <label >content</label>
-                <input type="text" name="content" required>
+                <textarea name="content" rows="5" cols="33" required></textarea>
                 </div>
                 <div style="grid-row:2; grid-column:2" >
                 <label >Category</label>

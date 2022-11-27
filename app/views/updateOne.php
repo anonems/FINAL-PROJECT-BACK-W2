@@ -22,13 +22,21 @@
                 </div>
 
                 <div style="grid-row:3; grid-column:2" >
+                    <label >New Statut</label>
+                    <select name="statut" value="<?=$article->getcategory()?>">
+                        <option value="1">public</option>
+                        <option value="0">private</option>
+                    </select>
+                </div>
+
+                <div style="grid-row:4; grid-column:2" >
                     <label >New Category</label>
                     <select name="category" value="<?=$article->getcategory()?>">
                         <option selected>Choice</option>
                         <option value="ecolo">écologie</option>
                     </select>
                 </div>
-                <button style="grid-row:4; grid-column:2"  type="submit" name="update">Submit</button>
+                <button style="grid-row:5; grid-column:2"  type="submit" name="update">Submit</button>
             </form>
         </div>
     </div>

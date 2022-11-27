@@ -71,7 +71,7 @@ class Comment extends BaseEntity
  
      public function getId_article(): int
      {
-         return $this->Id_article;
+         return $this->id_article;
      }
 
      public function getId_parent_comment(): ?int

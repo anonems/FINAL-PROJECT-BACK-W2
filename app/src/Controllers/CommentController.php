@@ -34,15 +34,5 @@ class CommentController extends AbstractController
         header("location: /article/" . $id );
         //$this->render("showOne.php", [], "Un article");
     }
-
-    // #[Route('/article/{id}', name: "showOne", methods: ["DELETE"])]
-    // public function delComment($id)
-    // {
-    //     $id_c = filter_input(INPUT_POST, "comment_id");
-    //     $commentManager = new CommentManager(new PDOFactory());
-    //     $comments = $commentManager->deleteComment($id_c);
-    //     header("location: /article/" . $id );
-    //     //$this->render("showOne.php", [], "Un article");
-    // }
     
 }

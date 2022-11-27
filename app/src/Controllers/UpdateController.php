@@ -37,10 +37,11 @@ class UpdateController extends AbstractController
         $category = filter_input(INPUT_POST, "category");
         $illustration = filter_input(INPUT_POST, "illustration");
         $descript = filter_input(INPUT_POST, "descript");
+        $statut = filter_input(INPUT_POST, "statut");
         
         $articleManager = new ArticleManager(new PDOFactory());
 
-        $articleManager->updateArticle($id, $username, $title, $content, $category, $illustration, $descript);
+        $articleManager->updateArticle($id, $username, $title, $content, $category, $illustration, $descript, $statut);
         
         header('location: /');
     }

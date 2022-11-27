@@ -42,7 +42,7 @@ class UserManager extends BaseManager
         return $users;
     }
 
-    public function updateUser( string $username, string $pwd, string $rol, int $id): void
+    public function updateUser(string $username, string $pwd, string $rol, int $id): void
     {
         $query = $this->pdo->prepare("UPDATE user  SET username=:username, pwd=:pwd, rol=:rol) WHERE id=:id ");
         $query->bindValue('username', $username, \PDO::PARAM_STR);
@@ -53,16 +53,16 @@ class UserManager extends BaseManager
         $query->execute();      
     }
 
-    public function deleteUser( string $username): void
+    public function deleteUser(string $username): void
     {
         $query = $this->pdo->prepare("DELETE FROM user WHERE username=:username ");
-        $query->bindValue('username', $username, \PDO::PARAM_INT);
+        $query->bindValue('username', $username, \PDO::PARAM_STR);
         $query->execute();     
         $query2 = $this->pdo->prepare("DELETE FROM article WHERE author=:username ");
-        $query2->bindValue('username', $username, \PDO::PARAM_INT);
+        $query2->bindValue('username', $username, \PDO::PARAM_STR);
         $query2->execute(); 
         $query3 = $this->pdo->prepare("DELETE FROM comment WHERE author=:username ");
-        $query3->bindValue('username', $username, \PDO::PARAM_INT);
+        $query3->bindValue('username', $username, \PDO::PARAM_STR);
         $query3->execute();   
     }
 }
