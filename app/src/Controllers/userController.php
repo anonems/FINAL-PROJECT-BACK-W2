@@ -36,6 +36,11 @@ class UserController extends AbstractController
         $pwd = filter_input(INPUT_POST, "pwd");
         $pwd_hash =  password_hash($pwd, PASSWORD_DEFAULT);
 
+        $update_username = filter_input(INPUT_POST, "username");
+        $update_pwd = filter_input(INPUT_POST, "pwd");
+        $update_pwd_hash =  password_hash($update_pwd, PASSWORD_DEFAULT);
+
+
         $userManager = new UserManager(new PDOFactory());
         $sessionManager = new SessionManager();
 
@@ -69,7 +74,7 @@ class UserController extends AbstractController
 
         }
         if($resmdp){
-            $userManager->updatePwd($username, $pwd);
+            $userManager->updatePwd($update_username, $update_pwd_hash);
             header("location: /login" );
 
         }

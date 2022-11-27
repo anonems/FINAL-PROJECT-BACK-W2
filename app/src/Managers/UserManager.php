@@ -51,6 +51,16 @@ class UserManager extends BaseManager
         $query->execute();      
     }
 
+    public function updatePwd(string $username, string $pwd): void
+    {
+        $query = $this->pdo->prepare("UPDATE user  SET pwd=:pwd WHERE username = :username");
+        $query->bindValue('username', $username, \PDO::PARAM_STR);
+        $query->bindValue('pwd', $pwd, \PDO::PARAM_STR);
+
+        $query->execute();      
+    }
+
+
     public function deleteUser(string $username): void
     {
         $query = $this->pdo->prepare("DELETE FROM user WHERE username=:username ");

@@ -7,13 +7,14 @@
                     <table>
                         <thead>
                             <tr>
-                                <th colspan="4">User table</th>
+                                <th colspan="5">User table</th>
                             </tr>
                             <tr>
                                 <td>id</td>
                                 <td>username</td>
                                 <td>role</td>
-                                <td>action</td>
+                                <td>action 1</td>
+                                <td>action 2</td>
                             </tr>
                         </thead>
                         <tbody>
