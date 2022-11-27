@@ -26,13 +26,16 @@
                                     <td><?=$user->getUsername()?></td>
                                     <td><?=$user->getRol()?></td>
                                     <?php
-                                    echo "<td><form action='/admin' method='post'><select type='hidden' name='rol' >
-                                        <option value='low'>low</option>   
-                                        <option value='hight'>hight</option>
-                                    </select> <input type='hidden' name='usernamehidden' value='".$user->getUsername()."'> <input type='submit' value='OK'></form></td>";
+                                    
                                     if($user->getUsername() != $sessionUsername){
+                                        echo "<td><form action='/admin' method='post'><select type='hidden' name='rol' >
+                                                <option value='low'>low</option>   
+                                                <option value='hight'>hight</option>
+                                                </select> <input type='hidden' name='usernamehidden' value='".$user->getUsername()."'> <input type='submit' value='OK'></form>
+                                            </td>";
                                         echo "<td><form action='/admin' method='post'><input type='hidden' name='user_id' value='".$user->getUsername()."'><button id='del_btn_a' type='submit'><span class='material-symbols-outlined' id='del_btn_a'>delete</span></button></form></td>";
                                     }else{
+                                        echo "<td>none</td>";
                                         echo "<td>none</td>";
                                     }
                                     ?>
