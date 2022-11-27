@@ -5,3 +5,7 @@ Projet backend, les consignes sont ici : https://hetic.arcplex.fr/wp-content/upl
 NB : toutes les fonctionnaltés à ce jour sont fonctionnelles, aucun bug à la surface !
 
 (il se peut que vous devier importer la bdd manuellement)
+
+Groupe W2 constitué de :
+HAKIRI Emir
+AISSAOUI Nassim
